@@ -1,111 +1,86 @@
+\documentclass[10pt, letterpaper]{article}
 
-\documentclass[a4paper,8pt]{article}
+% Page geometry
+\usepackage[left=0.5in, right=0.5in, top=0.2in, bottom=0.5in]{geometry}
 
-\usepackage{parskip} 
-\usepackage{hologo}
-\usepackage{fontspec}
-
-%other packages for formatting
-\RequirePackage{color}
-\RequirePackage{graphicx}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[scale=0.9, top=.4in, bottom=.4in]{geometry}
-
-%tabularx environment
-\usepackage{tabularx}
-
-%for lists within experience section
+% Formatting packages
+\usepackage{titlesec}
 \usepackage{enumitem}
-
-% centered version of 'X' col. type
-\newcolumntype{C}{>{\centering\arraybackslash}X} 
-
-%to prevent spillover of tabular into next pages
-\usepackage{supertabular}
+\usepackage[hidelinks]{hyperref} % Added hidelinks to hide ugly boxes around links
 \usepackage{tabularx}
-\newlength{\fullcollw}
-\setlength{\fullcollw}{0.42\textwidth}
 
-%custom \section
-\usepackage{titlesec}				
-\usepackage{multicol}
-\usepackage{multirow}
+% Disable hyphenation for cleaner look
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
 
-%CV Sections inspired by: 
-%http://stefano.italians.nl/archives/26
-\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{1pt}{2pt}{2pt}
+% Custom Section Formatting
+\titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{5pt}
 
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+% Custom Command for Work/Project Entries
+\newcommand{\resumeEntry}[4]{
+  \noindent\textbf{#1} \hfill \textbf{#2} \\
+  \textit{#3} \hfill \textit{#4}
+}
 
-%Setup hyperref package, and colours for links
-\usepackage[unicode, draft=false]{hyperref}
-\color[HTML]{110223}%{1C033C}
-\addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
+\newcommand{\projectEntry}[2]{
+  \noindent\textbf{#1} \hfill \textbf{#2}
+}
 
-%for social icons
-\usepackage{fontawesome5}
-% \usepackage{times}
-
-% For underline
-\usepackage[normalem]{ulem}
-
-\setmainfont{Arial}  % Set it to whatever you like
+% Remove page numbers
+\pagestyle{empty}
 
 \begin{document}
 
-% non-numbered pages
-\pagestyle{empty} 
+% --- HEADER ---
+\begin{center}
+    {\huge \textbf{Nishan Singh}} \\[5pt]
+    {\small 
+    \href{mailto:sidhunishan786@gmail.com}{sidhunishan786@gmail.com} $|$ 
+    +91-83070-27082 $|$ 
+    \href{https://www.linkedin.com/in/sidhunishan786/}{linkedin.com/in/sidhunishan786} $|$ 
+    \href{https://github.com/sidhunishan786/}{github.com/sidhunishan786}
+    }
+\end{center}
 
 
-\begin{tabularx}{\linewidth}{@{} C @{}}
-\color[HTML]{1C033C} \Huge{Nishan Singh} \\[6pt]
-\\
-\textcolor[HTML]{371e77}{{{{\faEnvelope} sidhunishan786@gmail.com}} $|$}
-\textcolor[HTML]{371e77}{{{\faMobile} +91-83070-27082}}
+% --- EXPERIENCE ---
+\section{Experience}
 
-\textcolor[HTML]{371e77}{\underline{{\raisebox{-0.05\height}{\faGithub} github.com/sidhunishan786}} $|$}
-\textcolor[HTML]{371e77}{\underline{{\raisebox{-0.05\height}{\faLinkedin} linkedin.com/in/sidhunishan786}}}
-\end{tabularx}
+\resumeEntry{DARIO HEALTH}{Gurugram, India}{Software Developer}{July 2024 - July 2025}
+\begin{itemize}[leftmargin=0.2in, nosep, topsep=2pt]
+    \item Architected the migration of core business logic from legacy Iconduct middleware to Workato, improving integration reliability and reducing manual data reconciliation by 30\%.
+    \item Mitigated a critical DDoS attack on legacy Linux infrastructure; engineered and deployed a Node.js-based rate limiter that successfully prevented 100\% of subsequent malicious traffic spikes, maintaining 99.9\% uptime.
+\end{itemize}
+\vspace{6pt}
 
+
+% --- SKILLS ---
 \section{Skills}
-\color[HTML]{1C033C}\textbf{Languages:} C/C++, Java, Python, JavaScript, TypeScript, SQL\\[3pt]
-\color[HTML]{1C033C}\textbf{Technologies \& Tools:} AWS, EC2, DynamoDB, S3, SQS, Lambda, Athena, Elasticsearch, Spark, Hive, Presto, Kubernetes, Docker, Splunk, Kafka, Spring, Angular, ReactJS\\[3pt]
+\begin{itemize}[leftmargin=0.15in, label={}, nosep]
+    \item \textbf{Languages:} C++, C, Javascript
+    \item \textbf{Tools/Technologies:} AWS, Docker, GraphQL, NodeJS, React, HTML, CSS, Redis, MYSQL, MongoDB, Linux, Git, Github, Github Actions CI/CD, Redux, Nginx 
+\end{itemize}
 
-%Experience
-\section{Work Experience}
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{{Adobe, Bangalore}} \hfill \color[HTML]{371e77} Mar 2021 - Present \\[4pt]
-\color[HTML]{371e77}\textbf{\textit{Computer Scientist}}\ \hfill \color[HTML]{4B28A4} \\[5pt]
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
-        \item Led the migration of Hive and Presto jobs from Qubole to AWS EMR, enhancing availability and significantly reducing operational costs.
-     
-    \end{itemize}
-\end{minipage}
-\end{tabularx}
-
-
-% Education
+% --- EDUCATION ---
 \section{Education}
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\color[HTML]{1C033C} \textbf{UIET, Panjab University Chandigarh} & \hfill \color[HTML]{371e77} Aug 2020 - May 2024 \\
-\color[HTML]{371e77} B.E. in Computer Science and Engineering & \hfill \color[HTML]{4B28A4} \textit{\textbf{CGPA: 8.20/10}} \\
-\multicolumn{2}{@{}X@{}}{Relevant Coursework: Object Oriented Programming, Databases, Discrete Maths, Data Structures and Algorithms, Operating Systems, Computer Networks, Machine Learning, Data Mining, Advance Data Structures and Algorithms, Information Retrieval, Image Processing}
-\end{tabularx}\\[3pt]
-
-% Projects
-\section{Project Work}
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
-        \item \textbf{CF-STATS [2023]:} Google Chrome extension to display the questions solved by the user in different rating buckets and topics. 
-    \end{itemize}
-    \end{minipage}
-\end{tabularx}\\[3pt]
+\noindent
+\textbf{UIET, Panjab University, Chandigarh} \hfill August 2020 - May 2024 \\
+B.E in Computer Science and Engineering \hfill \textbf{CGPA: 8.2} \\
+{\small \textit{Relevant Coursework: Databases, Operating Systems, Computer Networking, Compiler Design, Data Structures and Algorithms, Computer Architecture, Discrete Mathematics.}}
 
 
+% --- PROJECTS ---
+\section{Projects}
+
+% Added href to the title 'CF-STATS' only
+\projectEntry{\href{https://chromewebstore.google.com/detail/cf-stats/ilppbdfnhpcpcbileociilmlajjgacke}{CF-STATS}, Google Chrome Extension}{Nov 2023 -- Dec 2023}
+\begin{itemize}[leftmargin=0.2in, nosep, topsep=2pt]
+    \item Engineered a competitive programming analytics tool to visualize Codeforces user data.
+    \item Optimized data aggregation algorithms to achieve a \textbf{45x performance increase} in report generation speed compared to previous iterations.
+\end{itemize}
+\vspace{5pt}
 
 \end{document}
